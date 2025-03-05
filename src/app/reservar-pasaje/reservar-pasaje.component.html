@@ -1,0 +1,119 @@
+<div class="container mt-4">
+    <div class="card">
+      <div class="card-header">
+        <h3>Registro de Reservas</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="save()">
+          <div class="row mb-4">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Origen</label>
+                <select class="form-select" formControlName="origenId">
+                  <option value="">Seleccione...</option>
+                  @for (item of cities; track $index) {
+                    <option [value]="item.id">{{item.city}}</option>
+                  }
+                </select>
+              </div>
+              <div>
+                @if(form.controls['origenId'].invalid && (form.controls['origenId'].dirty || form.controls['origenId'].touched)) {
+                  
+                  @if (form.get('origenId')?.hasError('required')) {
+                    <span class="text-danger">Campo requerido</span>
+                  }
+                }
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Destino</label>
+                <select class="form-select" formControlName="destinoId">
+                  <option value="">Seleccione...</option>
+                  @for (item of cities; track $index) {
+                    <option [value]="item.id">{{item.city}}</option>
+                  }
+                </select>
+              </div>
+              <div>
+                @if(form.controls['destinoId'].invalid && (form.controls['destinoId'].dirty || form.controls['destinoId'].touched)) {
+                  
+                  @if (form.get('destinoId')?.hasError('required')) {
+                    <span class="text-danger">Campo requerido</span>
+                  }
+                }
+              </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Fecha Ida</label>
+              <input type="date" class="form-control" formControlName="fechaIda">
+            </div>
+            <div>
+              @if(form.controls['fechaIda'].invalid && (form.controls['fechaIda'].dirty || form.controls['fechaIda'].touched)) {
+                
+                @if (form.get('fechaIda')?.hasError('required')) {
+                  <span class="text-danger">Campo requerido</span>
+                }
+              }
+            </div>
+            <div class="row mt-4">
+                <div class="col">
+                  <button type="submit" class="btn btn-primary me-2">Buscar</button>
+                  </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Seleccionar Servicio</label>
+                    <select class="form-select" formControlName="serviceId">
+                      <option value="">Seleccione...</option>
+                      @for (item of services; track $index) {
+                        <option [value]="item.id">Partida: {{item.departureDate}} {{item.departureTime}} Llegada: {{item.arrivalDate}} {{item.arrivalTime}}</option>
+                      }
+                    </select>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Documento</label>
+                    <input type="number" class="form-control" formControlName="documento">
+                  </div>
+                  <div>
+                    @if(form.controls['documento'].invalid && (form.controls['documento'].dirty || form.controls['documento'].touched)) {
+                      
+                      @if (form.get('documento')?.hasError('required')) {
+                        <span class="text-danger">Campo requerido</span>
+                      }
+                    }
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Nombre</label>
+                    <input type="text" class="form-control" formControlName="nombre">
+                  </div>
+                  <div>
+                    @if(form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched)) {
+                      
+                      @if (form.get('nombre')?.hasError('required')) {
+                        <span class="text-danger">Campo requerido</span>
+                      }
+                    }
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Apellido</label>
+                    <input type="text" class="form-control" formControlName="apellido">
+                  </div>
+                  <div>
+                    @if(form.controls['apellido'].invalid && (form.controls['apellido'].dirty || form.controls['apellido'].touched)) {
+                      
+                      @if (form.get('apellido')?.hasError('required')) {
+                        <span class="text-danger">Campo requerido</span>
+                      }
+                    }
+                  </div>
+  
+          <div class="row mt-4">
+            <div class="col">
+              <button type="submit" class="btn btn-primary me-2">Confirmar Reserva</button>
+              <button type="button" class="btn btn-secondary">
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
