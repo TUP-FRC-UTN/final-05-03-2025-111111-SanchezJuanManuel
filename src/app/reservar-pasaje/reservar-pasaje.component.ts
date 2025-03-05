@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CitiesService } from '../cities.service';
 import { City } from '../models/city';
 import { Subscription } from 'rxjs';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Service } from '../models/service';
 import { ServicesService } from '../services.service';
 
@@ -42,7 +42,9 @@ private readonly servicesService: ServicesService = inject(ServicesService);
     serviceId: new FormControl('', [Validators.required]),
     documento: new FormControl('', [Validators.required, Validators.min(6)]),
     nombre: new FormControl('', [Validators.required, Validators.min(2)]),
-    apellido: new FormControl('', [Validators.required, Validators.min(2)]),    
+    apellido: new FormControl('', [Validators.required, Validators.min(2)]), 
+    pasajeros: new FormArray([]),
+
   });
 
   
@@ -75,7 +77,7 @@ private readonly servicesService: ServicesService = inject(ServicesService);
   }
 
   save() {
-    
+
   }
 }
 
